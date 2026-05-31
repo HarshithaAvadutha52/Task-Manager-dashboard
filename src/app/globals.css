@@ -3,31 +3,334 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --background-soft: #f4f7fa;
+  --card-bg: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --primary-accent: #3b82f6;
+  --primary-accent-soft: #eff6ff;
+  --border-color: #e2e8f0;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--background-soft);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Smooth active focus border animations */
+.focus-ring {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.focus-ring:focus-within {
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+/* Custom Soft-UI Shadow presets */
+.soft-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.03), 0 8px 16px -6px rgba(0, 0, 0, 0.02);
+  border-radius: 1.25rem; /* 20px - high border radius */
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.soft-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px -4px rgba(59, 130, 246, 0.06), 0 12px 20px -6px rgba(0, 0, 0, 0.03);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Soft Neumorphic Inset Shadow */
+.soft-inset {
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Circular Pomodoro Timer visual */
+.timer-pulse {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
   }
+  50% {
+    opacity: .85;
+    transform: scale(1.02);
+  }
+}
+
+/* ==========================================
+   SANCTUARY THEME SYSTEM
+   ========================================== */
+
+/* Midnight Sanctuary (Dark Mode) */
+.theme-dark {
+  --background-soft: #090d16;
+  --card-bg: #111827;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --primary-accent: #3b82f6;
+  --primary-accent-soft: rgba(59, 130, 246, 0.1);
+  --border-color: #1e293b;
+}
+
+/* Sunset Sanctuary (Warm Mode) */
+.theme-sunset {
+  --background-soft: #faf5f0;
+  --card-bg: #ffffff;
+  --text-primary: #431407;
+  --text-secondary: #c2410c;
+  --primary-accent: #ea580c;
+  --primary-accent-soft: #ffedd5;
+  --border-color: #fed7aa;
+}
+
+/* Unified Theme Style Overrides */
+.theme-dark, .theme-sunset {
+  background-color: var(--background-soft);
+  color: var(--text-primary);
+}
+
+.theme-dark body, .theme-sunset body {
+  background-color: var(--background-soft);
+}
+
+/* Dark mode selective class overrides */
+.theme-dark .bg-white, 
+.theme-dark aside, 
+.theme-dark header, 
+.theme-dark .soft-card,
+.theme-dark .bg-white\/80 {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+.theme-dark .bg-\[\#f4f7fa\] {
+  background-color: var(--background-soft) !important;
+}
+
+.theme-dark .text-slate-800, 
+.theme-dark .text-slate-700, 
+.theme-dark .text-slate-600,
+.theme-dark .text-slate-500 {
+  color: var(--text-primary) !important;
+}
+
+.theme-dark .text-slate-400 {
+  color: var(--text-secondary) !important;
+}
+
+.theme-dark .border-slate-100, 
+.theme-dark .border-slate-200, 
+.theme-dark .border-slate-150 {
+  border-color: var(--border-color) !important;
+}
+
+.theme-dark .bg-slate-50, 
+.theme-dark .bg-slate-50\/50, 
+.theme-dark .bg-slate-50\/20, 
+.theme-dark .bg-slate-50\/30 {
+  background-color: rgba(30, 41, 59, 0.4) !important;
+}
+
+.theme-dark input, 
+.theme-dark select, 
+.theme-dark textarea {
+  background-color: #0b0f19 !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.theme-dark input::placeholder, 
+.theme-dark textarea::placeholder {
+  color: #475569 !important;
+}
+
+.theme-dark .hover\:bg-slate-50:hover,
+.theme-dark .hover\:bg-slate-50\/50:hover,
+.theme-dark .hover\:bg-slate-50\/40:hover {
+  background-color: rgba(30, 41, 59, 0.6) !important;
+}
+
+/* Sunset mode selective class overrides */
+.theme-sunset .bg-white, 
+.theme-sunset aside, 
+.theme-sunset header, 
+.theme-sunset .soft-card,
+.theme-sunset .bg-white\/80 {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+.theme-sunset .bg-\[\#f4f7fa\] {
+  background-color: var(--background-soft) !important;
+}
+
+.theme-sunset .text-slate-800, 
+.theme-sunset .text-slate-700, 
+.theme-sunset .text-slate-600 {
+  color: var(--text-primary) !important;
+}
+
+.theme-sunset .text-slate-500,
+.theme-sunset .text-slate-400 {
+  color: var(--text-secondary) !important;
+}
+
+.theme-sunset .border-slate-100, 
+.theme-sunset .border-slate-200, 
+.theme-sunset .border-slate-150 {
+  border-color: var(--border-color) !important;
+}
+
+.theme-sunset .bg-slate-50, 
+.theme-sunset .bg-slate-50\/50, 
+.theme-sunset .bg-slate-50\/20, 
+.theme-sunset .bg-slate-50\/30 {
+  background-color: #faf0e6 !important;
+}
+
+.theme-sunset input, 
+.theme-sunset select, 
+.theme-sunset textarea {
+  background-color: #fffaf0 !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.theme-sunset input::placeholder, 
+.theme-sunset textarea::placeholder {
+  color: #c2410c/60 !important;
+}
+
+.theme-sunset .hover\:bg-slate-50:hover,
+.theme-sunset .hover\:bg-slate-50\/50:hover,
+.theme-sunset .hover\:bg-slate-50\/40:hover {
+  background-color: #faf0e6 !important;
+}
+
+/* ==========================================
+   UI SIZE SCALING SYSTEM
+   ========================================== */
+
+/* Compact View - tighter, denser layout */
+.ui-compact {
+  font-size: 13px;
+}
+.ui-compact main {
+  padding: 1.25rem !important;
+}
+.ui-compact .soft-card {
+  padding: 1rem;
+}
+.ui-compact h2 {
+  font-size: 1.25rem;
+}
+.ui-compact h3 {
+  font-size: 0.95rem;
+}
+.ui-compact .text-3xl {
+  font-size: 1.5rem !important;
+}
+.ui-compact .text-5xl {
+  font-size: 2.5rem !important;
+}
+.ui-compact .p-5 {
+  padding: 0.875rem !important;
+}
+.ui-compact .p-6 {
+  padding: 1rem !important;
+}
+.ui-compact .gap-6 {
+  gap: 1rem !important;
+}
+.ui-compact .gap-4 {
+  gap: 0.625rem !important;
+}
+.ui-compact .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+/* Comfortable View - default (no overrides needed) */
+.ui-comfortable {
+  font-size: 14px;
+}
+
+/* Large View - spacious, bigger text and cards */
+.ui-large {
+  font-size: 16px;
+}
+.ui-large main {
+  padding: 2.5rem !important;
+}
+.ui-large .soft-card {
+  padding: 2rem;
+}
+.ui-large h2 {
+  font-size: 2rem;
+}
+.ui-large h3 {
+  font-size: 1.35rem;
+}
+.ui-large .text-3xl {
+  font-size: 2.25rem !important;
+}
+.ui-large .text-5xl {
+  font-size: 4rem !important;
+}
+.ui-large .p-5 {
+  padding: 1.75rem !important;
+}
+.ui-large .p-6 {
+  padding: 2rem !important;
+}
+.ui-large .gap-6 {
+  gap: 2rem !important;
+}
+.ui-large .gap-4 {
+  gap: 1.25rem !important;
+}
+.ui-large .text-xs {
+  font-size: 0.825rem !important;
+}
+.ui-large .text-sm {
+  font-size: 0.95rem !important;
+}
+.ui-large .text-\[10px\] {
+  font-size: 0.75rem !important;
+}
+.ui-large .text-\[9px\] {
+  font-size: 0.7rem !important;
+}
+
+/* Smooth targeted transitions (performance-optimized, no wildcard) */
+button, a, input, select, textarea, .soft-card, .soft-card-hover {
+  transition-property: background-color, border-color, color, box-shadow, transform, opacity;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
