@@ -174,7 +174,7 @@ export const KanbanScreen: React.FC<KanbanScreenProps> = ({
                         })
                       ) : (
                         <div className="h-full flex flex-col items-center justify-center p-6 text-center border border-dashed border-slate-200 rounded-xl bg-white/10 min-h-[140px]">
-                          <span className="text-[9px] font-bold text-slate-400/80 uppercase tracking-widest">Quiet calm 🌿</span>
+                          <span className="text-[9px] font-bold text-slate-400/80 uppercase tracking-widest">All clear ✨</span>
                         </div>
                       )}
                       {provided.placeholder}

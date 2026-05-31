@@ -408,8 +408,8 @@ export const DashboardScreen: React.FC<DashboardProps> = ({
       {/* Premium Minimal Header Row */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-5 pt-0 sm:pt-2 gap-4 sm:gap-4">
         <div className="space-y-1">
-          <h2 className="text-3xl sm:text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">
-            Welcome back, {profile.display_name}! 🌿
+          <h2 className="text-2xl sm:text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">
+            Welcome back, {profile.display_name}! 👋
           </h2>
           <p className="text-sm sm:text-xs text-slate-450 font-semibold italic max-w-xl leading-relaxed">
             &ldquo;{currentQuote}&rdquo;
@@ -422,7 +422,7 @@ export const DashboardScreen: React.FC<DashboardProps> = ({
             Today&apos;s Intention
           </span>
           <div className="font-bold text-slate-800 text-sm flex items-center gap-2">
-            <span>Deep Focus 🌿</span>
+            <span>Deep Focus 🎯</span>
           </div>
         </div>
       </div>
@@ -662,7 +662,7 @@ export const DashboardScreen: React.FC<DashboardProps> = ({
             className="w-full py-3 bg-gradient-to-r from-indigo-50 to-blue-50 hover:from-indigo-100 hover:to-blue-100 text-indigo-600 hover:text-indigo-700 border border-indigo-100/40 rounded-xl font-bold text-xs tracking-wide transition-all shadow-sm flex items-center justify-center gap-1.5 mt-4"
           >
             <Sparkles size={14} className="animate-pulse" />
-            Open Immersive Focus Mode 🌿
+            Open Immersive Focus Mode 🎯
           </button>
         </div>
 

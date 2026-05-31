@@ -350,7 +350,7 @@ export const TasksScreen: React.FC<TasksScreenProps> = ({
             <div className="w-12 h-12 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center text-slate-400 mb-3 shadow-inner">
               <AlertCircle size={22} />
             </div>
-            <h4 className="font-bold text-slate-800 text-sm">Nothing pending 🌿</h4>
+            <h4 className="font-bold text-slate-800 text-sm">All caught up ✨</h4>
             <p className="text-xs text-slate-400 mt-1 max-w-xs font-medium">
               Enjoy the calm. Your journey begins here.
             </p>

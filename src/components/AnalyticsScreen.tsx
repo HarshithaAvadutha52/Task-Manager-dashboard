@@ -101,7 +101,7 @@ export const AnalyticsScreen: React.FC<AnalyticsScreenProps> = ({
         <div className="flex items-center justify-between border-b border-slate-50 pb-3.5">
           <div className="space-y-1">
             <h3 className="text-lg font-extrabold text-slate-800 flex items-center gap-2">
-              Daily Reflection Card 🌿
+              Daily Reflection Card 💡
             </h3>
             <p className="text-xs text-slate-400 font-semibold">
               Capture what brought you peace and clarity today

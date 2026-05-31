@@ -502,7 +502,7 @@ export default function RootSanctuaryPage() {
   // Render Loading Splash Screen
   if (isLoading) {
     const loadingMessages = [
-      "🌿 Preparing your focus space...",
+      "✨ Preparing your focus space...",
       "🎯 Organizing your priorities...",
       "⚡ Syncing your productivity flow...",
       "🌊 Restoring calm and clarity..."
