@@ -700,7 +700,7 @@ export default function RootSanctuaryPage() {
       />
 
       {/* Right Content Area */}
-      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
+      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto lg:pl-64">
         {/* Top Header Navigation bar */}
         <Header
           activeScreen={activeScreen}

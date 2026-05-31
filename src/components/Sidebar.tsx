@@ -84,12 +84,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
     <>
       {/* Mobile / Drawer Overlay */}
       <div 
-        className={`fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`} 
+        className={`fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"} lg:hidden`} 
         onClick={onClose}
       />
 
       <aside 
-        className={`w-64 bg-white border-r border-slate-100 flex flex-col h-screen fixed inset-y-0 left-0 z-50 transform transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"}`}
+        className={`w-64 bg-white border-r border-slate-100 flex flex-col h-screen fixed inset-y-0 left-0 z-50 transform transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${isOpen ? "translate-x-0 shadow-2xl lg:shadow-none" : "-translate-x-full lg:translate-x-0 lg:shadow-none"}`}
       >
         {/* Brand Logo */}
         <div className="p-6 pb-4 flex items-center gap-3">

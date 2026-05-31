@@ -88,7 +88,7 @@ export const KanbanScreen: React.FC<KanbanScreenProps> = ({
             return (
               <div
                 key={column.id}
-                className="flex flex-col h-full bg-slate-50/60 border border-slate-200 rounded-2xl p-4 min-w-[220px] max-w-[260px] flex-1 shrink-0 lg:shrink"
+                className="flex flex-col h-full bg-slate-50/60 border border-slate-200 rounded-2xl p-4 min-w-[220px] max-w-[320px] flex-1 shrink-0 lg:shrink"
               >
                 {/* Column Header */}
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-200 shrink-0">

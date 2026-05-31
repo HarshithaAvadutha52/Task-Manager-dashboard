@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="flex items-center gap-2 sm:gap-4 min-w-0">
         <button 
           onClick={onToggleSidebar}
-          className="p-1.5 sm:p-2 rounded-xl hover:bg-slate-100 text-slate-600 transition-colors shrink-0"
+          className="p-1.5 sm:p-2 rounded-xl hover:bg-slate-100 text-slate-600 transition-colors shrink-0 lg:hidden"
         >
           <Menu size={20} />
         </button>
