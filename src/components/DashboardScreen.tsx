@@ -419,7 +419,7 @@ export const DashboardScreen: React.FC<DashboardProps> = ({
         {/* Gentle Premium Emotional Indicator */}
         <div className="w-full md:w-auto shrink-0 z-10 bg-white border border-slate-100 px-4 py-3 sm:py-2.5 rounded-xl flex items-center justify-between md:block md:text-right shadow-sm">
           <span className="text-[10px] sm:text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-0 md:mb-1">
-            Today's Intention
+            Today&apos;s Intention
           </span>
           <div className="font-bold text-slate-800 text-sm flex items-center gap-2">
             <span>Deep Focus 🌿</span>
