@@ -508,7 +508,7 @@ export default function RootSanctuaryPage() {
 
   const submitAddTask = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!addTaskTitle.trim() || !addTaskWorkspace) return;
+    if (!addTaskTitle.trim() || !effectiveAddTaskWorkspace) return;
     
     if (addTaskReminder && typeof window !== 'undefined' && "Notification" in window) {
       if (Notification.permission !== "granted") {
