@@ -544,9 +544,9 @@ export default function RootSanctuaryPage() {
             </div>
 
             <div className="pt-6 border-t border-slate-100/50 w-full text-center mt-2">
-              <p className="text-[11px] text-slate-400 font-medium italic">
-                    {'"Consistency beats intensity."'}
-                </p>
+             <p className="text-[11px] text-slate-400 font-medium italic">
+  &quot;Consistency beats intensity.&quot;
+</p>
             </div>
           </div>
         </div>
