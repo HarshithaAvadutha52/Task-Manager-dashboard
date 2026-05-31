@@ -403,15 +403,15 @@ export const DashboardScreen: React.FC<DashboardProps> = ({
 
   // --- PERSONAL DASHBOARD ---
   return (
-    <div className="space-y-4 sm:space-y-6 animate-in fade-in duration-300">
+    <div className="space-y-5 sm:space-y-6 animate-in fade-in duration-300">
       
       {/* Premium Minimal Header Row */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-4 sm:pb-5 pt-1 sm:pt-2 gap-3 sm:gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-5 pt-2 gap-4">
         <div className="space-y-1">
-          <h2 className="text-xl sm:text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">
+          <h2 className="text-3xl sm:text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">
             Welcome back, {profile.display_name}! 🌿
           </h2>
-          <p className="text-[11px] sm:text-xs text-slate-450 font-semibold italic max-w-xl leading-relaxed">
+          <p className="text-sm sm:text-xs text-slate-450 font-semibold italic max-w-xl leading-relaxed">
             &ldquo;{currentQuote}&rdquo;
           </p>
         </div>
@@ -465,62 +465,62 @@ export const DashboardScreen: React.FC<DashboardProps> = ({
       )}
 
       {/* 4 Compact Stat Cards Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1: Pending Tasks */}
-        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between transition-all duration-200 hover:shadow-md hover:border-slate-250">
-          <div className="space-y-0.5 sm:space-y-1 min-w-0">
-            <span className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-wider block truncate">Pending Tasks</span>
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight leading-tight">
+        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 transition-all duration-200 hover:shadow-md hover:border-slate-250">
+          <div className="space-y-1 min-w-0">
+            <span className="text-[11px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-wider block truncate">Pending Tasks</span>
+            <h3 className="text-4xl sm:text-3xl font-black text-slate-800 tracking-tight leading-tight">
               {inProgressCount}
             </h3>
-            <span className="text-[8px] sm:text-[9px] text-slate-400 font-medium block truncate">Keep flowing smoothly</span>
+            <span className="text-[10px] sm:text-[9px] text-slate-400 font-medium block truncate">Keep flowing smoothly</span>
           </div>
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-indigo-50/70 text-indigo-600 flex items-center justify-center shrink-0 shadow-inner border border-indigo-100/10">
-            <ListTodo size={16} className="sm:w-[18px] sm:h-[18px]" />
+          <div className="w-10 h-10 rounded-xl bg-indigo-50/70 text-indigo-600 flex items-center justify-center shrink-0 shadow-inner border border-indigo-100/10 self-end sm:self-auto">
+            <ListTodo size={20} className="sm:w-[18px] sm:h-[18px]" />
           </div>
         </div>
 
         {/* Card 2: Completed Today */}
-        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between transition-all duration-200 hover:shadow-md hover:border-slate-250">
-          <div className="space-y-0.5 sm:space-y-1 min-w-0">
-            <span className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-wider block truncate">Completed</span>
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight leading-tight">
+        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 transition-all duration-200 hover:shadow-md hover:border-slate-250">
+          <div className="space-y-1 min-w-0">
+            <span className="text-[11px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-wider block truncate">Completed</span>
+            <h3 className="text-4xl sm:text-3xl font-black text-slate-800 tracking-tight leading-tight">
               {completedTodayCount}
             </h3>
-            <span className="text-[8px] sm:text-[9px] text-slate-400 font-medium block truncate">Beautiful milestones today</span>
+            <span className="text-[10px] sm:text-[9px] text-slate-400 font-medium block truncate">Beautiful milestones</span>
           </div>
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-50/70 text-emerald-600 flex items-center justify-center shrink-0 shadow-inner border border-emerald-100/10">
-            <CheckCircle2 size={16} className="sm:w-[18px] sm:h-[18px]" />
+          <div className="w-10 h-10 rounded-xl bg-emerald-50/70 text-emerald-600 flex items-center justify-center shrink-0 shadow-inner border border-emerald-100/10 self-end sm:self-auto">
+            <CheckCircle2 size={20} className="sm:w-[18px] sm:h-[18px]" />
           </div>
         </div>
 
         {/* Card 3: Focus Time */}
-        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between transition-all duration-200 hover:shadow-md hover:border-slate-250">
-          <div className="space-y-0.5 sm:space-y-1 min-w-0">
-            <span className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-wider block truncate">Focus Time</span>
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight leading-tight">
+        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 transition-all duration-200 hover:shadow-md hover:border-slate-250">
+          <div className="space-y-1 min-w-0">
+            <span className="text-[11px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-wider block truncate">Focus Time</span>
+            <h3 className="text-4xl sm:text-3xl font-black text-slate-800 tracking-tight leading-tight">
               {((profile.focus_sessions || 0) * 25) >= 60
                 ? `${(((profile.focus_sessions || 0) * 25) / 60).toFixed(1)} hrs`
                 : `${(profile.focus_sessions || 0) * 25} mins`}
             </h3>
-            <span className="text-[8px] sm:text-[9px] text-slate-400 font-medium block truncate">Deep work finished</span>
+            <span className="text-[10px] sm:text-[9px] text-slate-400 font-medium block truncate">Deep work finished</span>
           </div>
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-blue-50/70 text-blue-600 flex items-center justify-center shrink-0 shadow-inner border border-blue-100/10">
-            <Clock size={16} className="sm:w-[18px] sm:h-[18px]" />
+          <div className="w-10 h-10 rounded-xl bg-blue-50/70 text-blue-600 flex items-center justify-center shrink-0 shadow-inner border border-blue-100/10 self-end sm:self-auto">
+            <Clock size={20} className="sm:w-[18px] sm:h-[18px]" />
           </div>
         </div>
 
         {/* Card 4: Current Streak */}
-        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between transition-all duration-200 hover:shadow-md hover:border-slate-250">
-          <div className="space-y-0.5 sm:space-y-1 min-w-0">
-            <span className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-wider block truncate">Current Streak</span>
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight leading-tight">
+        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 transition-all duration-200 hover:shadow-md hover:border-slate-250">
+          <div className="space-y-1 min-w-0">
+            <span className="text-[11px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-wider block truncate">Current Streak</span>
+            <h3 className="text-4xl sm:text-3xl font-black text-slate-800 tracking-tight leading-tight">
               {streak} Days
             </h3>
-            <span className="text-[8px] sm:text-[9px] text-slate-400 font-medium block truncate">Consistency in action</span>
+            <span className="text-[10px] sm:text-[9px] text-slate-400 font-medium block truncate">Consistency in action</span>
           </div>
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-amber-50/70 text-amber-500 flex items-center justify-center shrink-0 shadow-inner border border-amber-100/10">
-            <Flame size={16} className="sm:w-[18px] sm:h-[18px]" />
+          <div className="w-10 h-10 rounded-xl bg-amber-50/70 text-amber-500 flex items-center justify-center shrink-0 shadow-inner border border-amber-100/10 self-end sm:self-auto">
+            <Flame size={20} className="sm:w-[18px] sm:h-[18px]" />
           </div>
         </div>
       </div>
