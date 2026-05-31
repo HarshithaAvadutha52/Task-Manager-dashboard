@@ -250,54 +250,57 @@ export const TasksScreen: React.FC<TasksScreenProps> = ({
             return (
               <div
                 key={task.id}
-                className={`soft-card p-4 flex items-center justify-between gap-4 transition-all duration-200 ${
+                className={`soft-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-200 ${
                   isCompleted
                     ? "bg-slate-50/50 border-slate-100 text-slate-400"
                     : "bg-white hover:border-slate-200"
                 }`}
               >
-                {/* Complete Checkbox */}
-                <button
-                  onClick={() => onToggleComplete(task.id, isCompleted)}
-                  className={`w-6 h-6 rounded-lg border flex items-center justify-center shrink-0 transition-all ${
-                    isCompleted
-                      ? "bg-blue-500 border-blue-500 text-white"
-                      : "border-slate-300 hover:border-slate-400 bg-white"
-                  }`}
-                >
-                  {isCompleted && <CheckCircle2 size={15} strokeWidth={2.5} />}
-                </button>
+                {/* Left Side: Checkbox & Task Details */}
+                <div className="flex items-start sm:items-center gap-3 min-w-0 flex-1">
+                  {/* Complete Checkbox */}
+                  <button
+                    onClick={() => onToggleComplete(task.id, isCompleted)}
+                    className={`mt-0.5 sm:mt-0 w-6 h-6 rounded-lg border flex items-center justify-center shrink-0 transition-all ${
+                      isCompleted
+                        ? "bg-blue-500 border-blue-500 text-white"
+                        : "border-slate-300 hover:border-slate-400 bg-white"
+                    }`}
+                  >
+                    {isCompleted && <CheckCircle2 size={15} strokeWidth={2.5} />}
+                  </button>
 
-                {/* Task Details */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <h4
-                      className={`font-semibold text-sm truncate leading-snug ${
-                        isCompleted ? "line-through text-slate-400 decoration-slate-300 font-medium" : "text-slate-800"
-                      }`}
-                    >
-                      {task.title}
-                    </h4>
-                    {/* Space Indicator Tag */}
-                    {activeWorkspaceId === "all" && taskWorkspace && (
-                      <span className="text-[9px] bg-slate-100 text-slate-500 font-bold px-2 py-0.5 rounded-full shrink-0 uppercase tracking-wider">
-                        {taskWorkspace.name}
-                      </span>
+                  {/* Task Details */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h4
+                        className={`font-semibold text-sm truncate leading-snug ${
+                          isCompleted ? "line-through text-slate-400 decoration-slate-300 font-medium" : "text-slate-800"
+                        }`}
+                      >
+                        {task.title}
+                      </h4>
+                      {/* Space Indicator Tag */}
+                      {activeWorkspaceId === "all" && taskWorkspace && (
+                        <span className="text-[9px] bg-slate-100 text-slate-500 font-bold px-2 py-0.5 rounded-full shrink-0 uppercase tracking-wider">
+                          {taskWorkspace.name}
+                        </span>
+                      )}
+                    </div>
+                    {task.description && (
+                      <p
+                        className={`text-xs mt-1 truncate max-w-xl ${
+                          isCompleted ? "line-through text-slate-300" : "text-slate-400 font-medium"
+                        }`}
+                      >
+                        {task.description}
+                      </p>
                     )}
                   </div>
-                  {task.description && (
-                    <p
-                      className={`text-xs mt-1 truncate max-w-xl ${
-                        isCompleted ? "line-through text-slate-300" : "text-slate-400 font-medium"
-                      }`}
-                    >
-                      {task.description}
-                    </p>
-                  )}
                 </div>
 
                 {/* Badges & Actions */}
-                <div className="flex items-center gap-3 shrink-0">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3 shrink-0 ml-9 sm:ml-0">
                   {/* Status Badge */}
                   <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${statusBadgeStyles[task.status]}`}>
                     {task.status.replace("_", " ")}
@@ -310,7 +313,7 @@ export const TasksScreen: React.FC<TasksScreenProps> = ({
 
                   {/* Target Date Badge */}
                   {task.due_date && (
-                    <span className="flex items-center gap-1 text-[10px] text-slate-400 border border-slate-100 bg-slate-50/50 px-2 py-1 rounded-full font-bold">
+                    <span className="flex items-center gap-1 text-[10px] text-slate-400 border border-slate-100 bg-slate-50/50 px-2 py-1 rounded-full font-bold whitespace-nowrap">
                       <CalIcon size={10} />
                       {task.due_date}
                     </span>
@@ -333,7 +336,7 @@ export const TasksScreen: React.FC<TasksScreenProps> = ({
                   {/* Delete Button */}
                   <button
                     onClick={() => onDeleteTask(task.id)}
-                    className="text-slate-300 hover:text-rose-500 hover:bg-rose-50 p-2 rounded-xl transition-colors duration-200"
+                    className="text-slate-300 hover:text-rose-500 hover:bg-rose-50 p-2 rounded-xl transition-colors duration-200 ml-auto sm:ml-0 shrink-0"
                     title="Delete Task"
                   >
                     <Trash2 size={14} />
