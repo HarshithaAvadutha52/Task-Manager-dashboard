@@ -81,14 +81,14 @@ export const KanbanScreen: React.FC<KanbanScreenProps> = ({
 
       {/* Drag & Drop Context */}
       <DragDropContext onDragEnd={handleDragEnd}>
-        <div className="flex flex-row gap-5 flex-1 overflow-x-auto min-h-0 pb-4 pr-1 select-none">
+        <div className="flex flex-col lg:flex-row gap-5 flex-1 overflow-y-auto lg:overflow-y-hidden lg:overflow-x-auto min-h-0 pb-4 pr-1 sm:pr-2 select-none">
           {columns.map((column) => {
             const columnTasks = tasksByStatus[column.id];
 
             return (
               <div
                 key={column.id}
-                className="flex flex-col h-full bg-slate-50/60 border border-slate-200 rounded-2xl p-4 min-w-[220px] max-w-[320px] flex-1 shrink-0 lg:shrink"
+                className="flex flex-col h-auto lg:h-full bg-slate-50/60 border border-slate-200 rounded-2xl p-4 w-full lg:min-w-[220px] lg:max-w-[320px] lg:flex-1 shrink-0"
               >
                 {/* Column Header */}
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-200 shrink-0">
