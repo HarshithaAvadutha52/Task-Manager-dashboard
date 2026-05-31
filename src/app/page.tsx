@@ -712,7 +712,7 @@ export default function RootSanctuaryPage() {
         />
 
         {/* Dynamic Screen Injector */}
-        <main className="flex-1 px-3 py-4 sm:p-8 overflow-y-auto">
+        <main className="flex-1 px-3 pt-1 pb-6 sm:p-8 overflow-y-auto">
            {activeScreen === "dashboard" && (
             <DashboardScreen
               tasks={tasks}

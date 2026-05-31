@@ -403,10 +403,10 @@ export const DashboardScreen: React.FC<DashboardProps> = ({
 
   // --- PERSONAL DASHBOARD ---
   return (
-    <div className="space-y-5 sm:space-y-6 animate-in fade-in duration-300">
+    <div className="space-y-4 sm:space-y-6 animate-in fade-in duration-300">
       
       {/* Premium Minimal Header Row */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-5 pt-2 gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-4 sm:pb-5 pt-0 sm:pt-2 gap-3 sm:gap-4">
         <div className="space-y-1">
           <h2 className="text-3xl sm:text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">
             Welcome back, {profile.display_name}! 🌿
@@ -415,13 +415,11 @@ export const DashboardScreen: React.FC<DashboardProps> = ({
             &ldquo;{currentQuote}&rdquo;
           </p>
         </div>
-        
+
         {/* Gentle Premium Emotional Indicator */}
-        <div className="shrink-0 z-10 bg-white border border-slate-100 px-4 py-2.5 rounded-xl text-left md:text-right shadow-sm">
-          <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block leading-none">Today&apos;s Intention</span>
-          <span className="text-xs font-bold text-slate-700 block mt-1.5 flex items-center gap-1 md:justify-end">
-            Deep Focus <span className="text-emerald-500">🌿</span>
-          </span>
+        <div className="w-full md:w-auto shrink-0 z-10 bg-white border border-slate-100 px-4 py-3 md:py-2.5 rounded-xl shadow-sm flex items-center justify-between md:block md:text-right">
+          <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest md:mb-0.5">Today's Intention</span>
+          <span className="font-bold text-slate-700 text-sm">{profile.daily_intention || "Deep Focus"} 🌿</span>
         </div>
       </div>
 
