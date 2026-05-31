@@ -90,12 +90,34 @@ export default function RootSanctuaryPage() {
 
   // Check auth session on startup — fast path: load localStorage first, then hydrate
   useEffect(() => {
-    // Fast synchronous check: if guest profile exists in localStorage, show UI immediately
-    const localProfile = localStorage.getItem("tf_profile");
-    if (localProfile) {
+    // Fast synchronous check: if profile exists in localStorage, show UI immediately (Stale-while-revalidate)
+    const localProfileStr = localStorage.getItem("tf_profile");
+    if (localProfileStr) {
       try {
-        setProfile(JSON.parse(localProfile));
-        setIsGuestMode(true);
+        const parsedProfile = JSON.parse(localProfileStr);
+        setProfile(parsedProfile);
+        setIsGuestMode(parsedProfile.id === "guest-user");
+        
+        // Load cached data instantly so the dashboard isn't empty
+        const cachedTasks = localStorage.getItem("tf_tasks");
+        const cachedWorkspaces = localStorage.getItem("tf_workspaces");
+        const cachedHabits = localStorage.getItem("tf_habits");
+        const cachedStreak = localStorage.getItem("tf_selfcare_streak");
+        
+        if (cachedTasks) setTasks(JSON.parse(cachedTasks));
+        if (cachedWorkspaces) {
+          const ws = JSON.parse(cachedWorkspaces);
+          setWorkspaces(ws);
+          if (ws.length > 0 && activeWorkspaceId === "all") {
+             // Respect joined room if exists
+             setActiveWorkspaceId(parsedProfile.joined_room_id || ws[0].id);
+          }
+        }
+        if (cachedHabits) setHabits(JSON.parse(cachedHabits));
+        if (cachedStreak) setStreak(parseInt(cachedStreak, 10));
+        
+        // Hide splash screen immediately!
+        setIsLoading(false);
       } catch { /* ignore parse errors */ }
     }
 
@@ -104,9 +126,8 @@ export default function RootSanctuaryPage() {
         const user = await db.getSessionUser();
         if (user) {
           setProfile(user);
-          await loadSanctuaryData();
-        } else if (localProfile) {
-          // Already set profile above, just load data
+          await loadSanctuaryData(); // Silent background refresh from Supabase
+        } else if (localProfileStr) {
           await loadSanctuaryData();
         }
       } catch (err) {
