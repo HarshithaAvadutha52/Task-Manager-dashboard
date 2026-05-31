@@ -49,36 +49,38 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="hidden sm:inline text-slate-300">/</span>
             <span className="truncate">Dashboard</span>
           </div>
-          <h2 className="text-lg sm:text-xl font-bold text-slate-800 flex items-center gap-2 mt-0.5 sm:mt-1 min-w-0 truncate">
-          <span className="truncate min-w-0">{activeScreen === "dashboard" ? activeWorkspace?.name || "Personal Space" : screenTitles[activeScreen] || "TaskFlow Workspace"}</span>
-          {activeWorkspace?.type === "collaborative" ? (
-            <div className="hidden sm:flex items-center gap-3 ml-2 shrink-0">
-              <span className="text-[10px] bg-blue-50 text-blue-600 font-bold px-2 py-0.5 rounded-full flex items-center gap-0.5 border border-blue-100 animate-pulse">
-                👥 Collaborative
-              </span>
-              {activeWorkspace.room_id && (
-                <div className="flex items-center gap-2 bg-slate-100 rounded-lg px-2 py-1 shrink-0">
-                  <span className="text-[10px] font-bold text-slate-500">ID: {activeWorkspace.room_id}</span>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText(`Join my workspace on TaskFlow! Room ID: ${activeWorkspace.room_id}`);
-                      alert("Share link copied to clipboard!");
-                    }}
-                    className="text-[10px] font-bold text-blue-600 bg-white hover:bg-blue-50 border border-slate-200 px-2 py-0.5 rounded-md transition-colors shadow-sm"
-                  >
-                    Copy
-                  </button>
-                </div>
-              )}
-            </div>
-          ) : (
-            activeScreen === "dashboard" && (
-              <span className="hidden sm:flex text-[10px] bg-emerald-50 text-emerald-600 font-bold px-2 py-0.5 rounded-full items-center gap-0.5 shrink-0">
-                <Sparkles size={8} /> Active
-              </span>
-            )
-          )}
-        </h2>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mt-0.5 sm:mt-1 min-w-0">
+            <h2 className="text-lg sm:text-xl font-bold text-slate-800 truncate min-w-0">
+              {activeScreen === "dashboard" ? activeWorkspace?.name || "Personal Space" : screenTitles[activeScreen] || "TaskFlow Workspace"}
+            </h2>
+            {activeWorkspace?.type === "collaborative" ? (
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="hidden sm:flex text-[10px] bg-blue-50 text-blue-600 font-bold px-2 py-0.5 rounded-full items-center gap-0.5 border border-blue-100 animate-pulse">
+                  👥 Collaborative
+                </span>
+                {activeWorkspace.room_id && (
+                  <div className="flex items-center gap-2 bg-slate-100 rounded-lg px-2 py-1 shrink-0">
+                    <span className="text-[10px] font-bold text-slate-500">ID: {activeWorkspace.room_id}</span>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(`Join my workspace on TaskFlow! Room ID: ${activeWorkspace.room_id}`);
+                        alert("Share link copied to clipboard!");
+                      }}
+                      className="text-[10px] font-bold text-blue-600 bg-white hover:bg-blue-50 border border-slate-200 px-2 py-0.5 rounded-md transition-colors shadow-sm"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              activeScreen === "dashboard" && (
+                <span className="hidden sm:flex text-[10px] bg-emerald-50 text-emerald-600 font-bold px-2 py-0.5 rounded-full items-center gap-0.5 shrink-0">
+                  <Sparkles size={8} /> Active
+                </span>
+              )
+            )}
+          </div>
         </div>
       </div>
 
