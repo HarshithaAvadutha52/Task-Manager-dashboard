@@ -39,17 +39,17 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
         <button 
           onClick={onToggleSidebar}
-          className="p-1.5 sm:p-2 rounded-xl hover:bg-slate-100 text-slate-600 transition-colors shrink-0 lg:hidden"
+          className="p-1.5 sm:p-2 rounded-xl hover:bg-slate-100 text-slate-600 transition-colors lg:hidden shrink-0"
         >
-          <Menu size={20} />
+          <Menu size={18} className="sm:w-[20px] sm:h-[20px]" />
         </button>
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-1 sm:gap-2 text-[10px] sm:text-xs font-semibold text-slate-400 truncate">
-          <span>TaskFlow</span>
-          <span>/</span>
-          <span className="capitalize truncate">{activeScreen === "kanban" ? "Flow" : activeScreen}</span>
-        </div>
-        <h2 className="text-sm sm:text-xl font-bold text-slate-800 flex items-center gap-2 mt-0.5 sm:mt-1 min-w-0">
+        <div className="min-w-0">
+          <div className="text-xs sm:text-xs text-slate-500 font-medium mb-0.5 flex items-center gap-1.5 truncate">
+            <span className="hidden sm:inline text-slate-400">TaskFlow</span>
+            <span className="hidden sm:inline text-slate-300">/</span>
+            <span className="truncate">Dashboard</span>
+          </div>
+          <h2 className="text-lg sm:text-xl font-bold text-slate-800 flex items-center gap-2 mt-0.5 sm:mt-1 min-w-0 truncate">
           <span className="truncate min-w-0">{activeScreen === "dashboard" ? activeWorkspace?.name || "Personal Space" : screenTitles[activeScreen] || "TaskFlow Workspace"}</span>
           {activeWorkspace?.type === "collaborative" ? (
             <div className="hidden sm:flex items-center gap-3 ml-2 shrink-0">
