@@ -34,31 +34,31 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="bg-white/80 backdrop-blur-md border-b border-slate-100 px-8 py-4 flex items-center justify-between sticky top-0 z-30">
+    <header className="bg-white/80 backdrop-blur-md border-b border-slate-100 px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between sticky top-0 z-30 gap-2">
       {/* Page Title / Breadcrumb */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4 min-w-0">
         <button 
           onClick={onToggleSidebar}
-          className="p-2 rounded-xl hover:bg-slate-100 text-slate-600 transition-colors"
+          className="p-1.5 sm:p-2 rounded-xl hover:bg-slate-100 text-slate-600 transition-colors shrink-0 md:hidden"
         >
           <Menu size={20} />
         </button>
-        <div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
+        <div className="min-w-0">
+          <div className="flex items-center gap-1 sm:gap-2 text-[10px] sm:text-xs font-semibold text-slate-400 truncate">
           <span>TaskFlow</span>
           <span>/</span>
-          <span className="capitalize">{activeScreen === "kanban" ? "Flow" : activeScreen}</span>
+          <span className="capitalize truncate">{activeScreen === "kanban" ? "Flow" : activeScreen}</span>
         </div>
-        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2 mt-1">
-          {activeScreen === "dashboard" ? activeWorkspace?.name || "Personal Space" : screenTitles[activeScreen] || "TaskFlow Workspace"}
+        <h2 className="text-sm sm:text-xl font-bold text-slate-800 flex items-center gap-2 mt-0.5 sm:mt-1 truncate">
+          <span className="truncate">{activeScreen === "dashboard" ? activeWorkspace?.name || "Personal Space" : screenTitles[activeScreen] || "TaskFlow Workspace"}</span>
           {activeWorkspace?.type === "collaborative" ? (
-            <div className="flex items-center gap-3 ml-2">
+            <div className="hidden sm:flex items-center gap-3 ml-2">
               <span className="text-[10px] bg-blue-50 text-blue-600 font-bold px-2 py-0.5 rounded-full flex items-center gap-0.5 border border-blue-100 animate-pulse">
-                👥 Collaborative Room
+                👥 Collaborative
               </span>
               {activeWorkspace.room_id && (
                 <div className="flex items-center gap-2 bg-slate-100 rounded-lg px-2 py-1">
-                  <span className="text-[10px] font-bold text-slate-500">ROOM ID: {activeWorkspace.room_id}</span>
+                  <span className="text-[10px] font-bold text-slate-500">ID: {activeWorkspace.room_id}</span>
                   <button
                     onClick={() => {
                       navigator.clipboard.writeText(`Join my workspace on TaskFlow! Room ID: ${activeWorkspace.room_id}`);
@@ -66,14 +66,14 @@ export const Header: React.FC<HeaderProps> = ({
                     }}
                     className="text-[10px] font-bold text-blue-600 bg-white hover:bg-blue-50 border border-slate-200 px-2 py-0.5 rounded-md transition-colors shadow-sm"
                   >
-                    Copy Invite
+                    Copy
                   </button>
                 </div>
               )}
             </div>
           ) : (
             activeScreen === "dashboard" && (
-              <span className="text-[10px] bg-emerald-50 text-emerald-600 font-bold px-2 py-0.5 rounded-full flex items-center gap-0.5">
+              <span className="hidden sm:flex text-[10px] bg-emerald-50 text-emerald-600 font-bold px-2 py-0.5 rounded-full items-center gap-0.5 shrink-0">
                 <Sparkles size={8} /> Active
               </span>
             )
@@ -83,21 +83,22 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Top Bar Switcher dropdown and actions */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4 shrink-0">
         {/* Workspace Switcher */}
         {activeScreen !== "dashboard" && (
           <div className="relative">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl border border-slate-100 hover:bg-slate-50 text-slate-700 font-semibold text-xs transition-all duration-200"
+              className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-100 hover:bg-slate-50 text-slate-700 font-semibold text-[10px] sm:text-xs transition-all duration-200"
             >
-              <FolderKanban size={13} className="text-slate-400" />
-              <span>Workspace: {activeWorkspace?.name || "Personal"}</span>
+              <FolderKanban size={13} className="text-slate-400 hidden sm:block" />
+              <span className="hidden sm:inline">Workspace:</span>
+              <span className="max-w-[60px] sm:max-w-[100px] truncate">{activeWorkspace?.name || "Personal"}</span>
               <ChevronDown size={12} className={`text-slate-400 transition-transform ${isDropdownOpen ? "rotate-180" : ""}`} />
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute right-0 top-full mt-1.5 w-52 bg-white border border-slate-100 rounded-xl shadow-lg z-50 p-1.5 animate-in fade-in slide-in-from-top-1 duration-150">
+              <div className="absolute right-0 top-full mt-1.5 w-48 sm:w-52 bg-white border border-slate-100 rounded-xl shadow-lg z-50 p-1.5 animate-in fade-in slide-in-from-top-1 duration-150">
                 <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 py-1 mb-1 border-b border-slate-50">
                   Switch Workspaces
                 </div>
@@ -114,7 +115,7 @@ export const Header: React.FC<HeaderProps> = ({
                         : "text-slate-600 hover:bg-slate-50"
                     }`}
                   >
-                    <CozyIcon name={ws.icon} size={14} />
+                    <CozyIcon name={ws.icon} size={14} className="shrink-0" />
                     <span className="truncate">{ws.name}</span>
                   </button>
                 ))}
@@ -126,7 +127,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Global Create Button */}
         <button
           onClick={onOpenAddTaskModal}
-          className="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm hover:shadow transition-all duration-200"
+          className="flex items-center gap-1 sm:gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-[10px] sm:text-xs font-bold px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl shadow-sm hover:shadow transition-all duration-200 shrink-0"
         >
           <Plus size={14} />
           <span>New Task</span>
@@ -135,3 +136,4 @@ export const Header: React.FC<HeaderProps> = ({
     </header>
   );
 };
+
